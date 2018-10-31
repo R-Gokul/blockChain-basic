@@ -52,7 +52,7 @@ func main() {
 }
 
 // calculate the new hash value
-func calculateHash(block Block) string {
+func calHash(block Block) string {
 	record := string(block.Index) + block.Timestamp + string(block.BPM) + block.PrevHash
 	h := sha256.New()
 	h.Write([]byte(record))
@@ -71,7 +71,7 @@ func generateBlock(oldBlock Block, BPM int) (Block, error) {
 	newBlock.Timestamp = t.String()
 	newBlock.BPM = BPM
 	newBlock.PrevHash = oldBlock.Hash
-	newBlock.Hash = calculateHash(newBlock)
+	newBlock.Hash = calHash(newBlock)
 
 	return newBlock, nil
 }
