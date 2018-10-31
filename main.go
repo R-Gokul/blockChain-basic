@@ -41,6 +41,14 @@ func main() {
 		log.Fatal(err)
 	}
 
+	go func() {
+		t := time.Now()
+		genesisBlock := Block{0, t.String(), 0, "", ""}
+		spew.Dump(genesisBlock)
+		Blockchain = append(Blockchain, genesisBlock)
+	}()
+	log.Fatal(run())
+
 }
 
 // calculate the new hash value
